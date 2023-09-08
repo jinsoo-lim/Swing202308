@@ -82,11 +82,9 @@ public class JinsooPractice_modifyPage_modify extends JFrame {
 			this.signUpPanel.add(cancelbtn);
 			
 			this.setContentPane(signUpPanel);
-//			this.setSize(300,500);	
 			pack();
 			this.setLocationRelativeTo(null);
 			
-			//돌아가기 버튼 누르면,
 			cancelbtn.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -115,7 +113,6 @@ public class JinsooPractice_modifyPage_modify extends JFrame {
 					pwCheckText.grabFocus();
 					return;
 				}
-				// 패스워드와 패드워드 확인 란이 ! equls (같지 않다면) 재밌네.
 				if(!(pwField.getText().trim().equals(pwCheckField.getText().trim()))) {
 					JOptionPane.showMessageDialog(null, "비밀번호가 같지 않습니다.!!", "비밀번호 확인", JOptionPane.WARNING_MESSAGE);
 					return;
@@ -146,14 +143,9 @@ public class JinsooPractice_modifyPage_modify extends JFrame {
 					return;
 				}
 				try {
-				//회원정보 파일을 열다.
 				BufferedReader bufferedReader = new BufferedReader(new FileReader("C:\\userinfo\\memberinfo.txt"));
-				//한 줄을 읽은 후 str변수에 집어 넣는다.
 				String str;
-				//수정 할 데이터 이외에 데이터를 임시로 담아놓는 변수
 				String dummyInfo = "";
-				//읽어들인 줄에 정보가 있다면 str변수에 담는다. 
-				//읽어들인 정보가 없다면 처리를 중단한다.
 					while((str = bufferedReader.readLine()) != null) {
 						String[] splitText = str.split("\\|");
 						
@@ -168,7 +160,6 @@ public class JinsooPractice_modifyPage_modify extends JFrame {
 					}
 					bufferedReader.close();
 					
-					//파일을 새로운 정보로 갱신한다.
 					String fileName = "C:\\userinfo\\memberinfo.txt";
 					
 					BufferedWriter bufferwriter = new BufferedWriter(new FileWriter(fileName,false));
@@ -176,8 +167,6 @@ public class JinsooPractice_modifyPage_modify extends JFrame {
 					bufferwriter.flush();
 					bufferwriter.close();
 					
-					//내 정보 화면으로 돌아갈때 새로운 정보가 표시되게 한다.
-					//로그인 화면이 가지고 있는 정보(필드)를 , 지금 수정한 정보에 넣는다.
 					JinsooPractice_LoginIn.login_pw = pwField.getText();
 					JinsooPractice_LoginIn.login_pwCheck = pwCheckField.getText();
 					JinsooPractice_LoginIn.login_name = nameField.getText();

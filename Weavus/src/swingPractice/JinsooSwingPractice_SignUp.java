@@ -48,7 +48,6 @@ public class JinsooSwingPractice_SignUp extends JDialog {
 			this.signUpPanel.add(cancelbtn);
 			
 			this.setContentPane(signUpPanel);
-//			this.setSize(300,500);	
 			pack();
 			this.setLocationRelativeTo(null);
 
@@ -70,14 +69,13 @@ public class JinsooSwingPractice_SignUp extends JDialog {
 
 
 	private void checkValue() {
-		 //회원 가입할때 모든 값이 입력되었는지 체크하기 위한 메소드
 		signUpbtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if(idText.getText().trim().length()==0 || idText.getText().trim().equals("아이디")) {
 					JOptionPane.showMessageDialog(null, "아이디를 입력해 주세요.", "아이디 입력", JOptionPane.WARNING_MESSAGE);
-					idText.grabFocus(); // 해당 텍스트 필드에 포커스 설정
-					return;  //즉시, 코드를 중지시킨다. //가독성 위함
+					idText.grabFocus(); 
+					return;  
 				}
 				if(pwText.getText().trim().length()==0) {
 					JOptionPane.showMessageDialog(null, "비밀번호를 입력해 주세요.", "비밀번호 입력", JOptionPane.WARNING_MESSAGE);
@@ -90,7 +88,6 @@ public class JinsooSwingPractice_SignUp extends JDialog {
 					pwCheckText.grabFocus();
 					return;
 				}
-				// 패스워드와 패드워드 확인 란이 ! equls (같지 않다면) 재밌네.
 				if(!(pwText.getText().trim().equals(pwCheckText.getText().trim()))) {
 					JOptionPane.showMessageDialog(null, "비밀번호가 같지 않습니다.!!", "비밀번호 확인", JOptionPane.WARNING_MESSAGE);
 					return;
@@ -124,9 +121,6 @@ public class JinsooSwingPractice_SignUp extends JDialog {
 				
 				
 				
-				//회원가입시 텍스트 파일을 하나 만들어서 아이디와 비번을 저장 하자. 
-				//한줄 뛰고 아이디|비밀번호 텍스트 파일에 차곡 차곡 저장하기 "|" 는 
-				//아이디랑 패스워드 구분하기 위해 사용
 				String txt = idText.getText()+"|"+pwText.getText()+"|"+pwText.getText()+"|"+nameText.getText()+"|"+birthYearText.getText()
 				+"|"+birthMonthContent.getText()+"|"+birthDayText.getText()+"|"+phoneNumberText.getText();
 				txt = txt + "\n";
@@ -142,7 +136,6 @@ public class JinsooSwingPractice_SignUp extends JDialog {
 				
 				try {
 					BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName,true));
-					// 파일안에 문자열 쓰기
 					bufferedWriter.write(txt);
 					bufferedWriter.flush();
 					
@@ -151,8 +144,7 @@ public class JinsooSwingPractice_SignUp extends JDialog {
 				} catch(Exception errmsg){
 					errmsg.printStackTrace();
 				}
-				//여기까지 왔다면 모든 값을 입력하고 선택하는 것이 완료되었으니 회원가입 과정이 완료.	
-				membershipProgress = true;	//멤버 쪽에, 초기화 불린
+				membershipProgress = true;	
 				
 				JOptionPane.showMessageDialog(null, "회원 가입이 완료 되었습니다.","회원 가입 완료.", JOptionPane.WARNING_MESSAGE);
 				
@@ -164,21 +156,19 @@ public class JinsooSwingPractice_SignUp extends JDialog {
 	}
 
 
-	//텍스트 필드에 있는 값을 체크하고 지우기 위한 메소드
 	 private void FocusEvent() {
 			idText.addFocusListener(new FocusListener() {
 				public void focusLost(FocusEvent e) {		
 					if(idText.getText().trim().length()==0) {
 						idText.setText("아이디");
 					}
-					//focuslost 포커스를 잃는 경우
 				}
 				public void focusGained(FocusEvent e) {				
 					if(idText.getText().trim().equals("아이디")) {
 						idText.setText("");
 					}				
 				}
-			});      //focusgained  포커스를 얻은 경우		
+			});  
 			
 			nameText.addFocusListener(new FocusListener() {
 				public void focusLost(FocusEvent e) {

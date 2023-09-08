@@ -57,11 +57,9 @@ public class JinsooPractice_infoTap extends JFrame {
 			this.signUpPanel.add(cancelbtn);
 			
 			this.setContentPane(signUpPanel);
-//			this.setSize(300,500);	
 			pack();
 			this.setLocationRelativeTo(null);
 			
-			//돌아가기 버튼 누르면,
 			cancelbtn.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {

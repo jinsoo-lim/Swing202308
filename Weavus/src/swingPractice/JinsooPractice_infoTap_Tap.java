@@ -31,9 +31,7 @@ public class JinsooPractice_infoTap_Tap extends JFrame {
 
     public JinsooPractice_infoTap_Tap() {
     	
-        infoList = new ArrayList<>(); // 데이터를 저장할 리스트 초기화
-
-        // 파일에서 데이터를 읽어와서 infoList 리스트에 저장
+        infoList = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader("C:\\userinfo\\memberinfo.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -43,26 +41,21 @@ public class JinsooPractice_infoTap_Tap extends JFrame {
             e.printStackTrace();
         }
 
-        // JComboBox 생성 및 데이터 설정
         comboBox = new JComboBox<>();
         for (String info : infoList) {
             String[] splitText = info.split("\\|");
             String infold = splitText[0];
-            comboBox.addItem(infold); // 콤보박스에 아이디 추가
+            comboBox.addItem(infold); 
         }
 
-        // JComboBox 이벤트 처리
         comboBox.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String selectedValue = (String) comboBox.getSelectedItem();
-                // 선택된 항목을 처리하는 코드 작성
-                // 여기서는 선택된 아이디에 해당하는 정보를 표시합니다.
                 for (String info : infoList) {
                     String[] splitText = info.split("\\|");
                     String infold = splitText[0];
                     if (infold.equals(selectedValue)) {
-                        // 선택된 아이디에 해당하는 정보를 표시
                         idText.setText("아이디:           " + infold);
                         pwText.setText("비밀번호:           " + splitText[1]);
                         nameText.setText("이    름:           " + splitText[3]);
@@ -86,7 +79,6 @@ public class JinsooPractice_infoTap_Tap extends JFrame {
         });
         
         JPanel infoPanel = new JPanel(new GridLayout(6,6));
-        // JFrame 설정
         setTitle("회원 정보");
         setSize(500,300);
         setLocationRelativeTo(null);
